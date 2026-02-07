@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>实战案例</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>实战案例：泰坦尼克号生存分析</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html">环境准备</a></li>
+        <li><a href="python_basics.html">Python基础</a></li>
+        <li><a href="numpy.html">NumPy</a></li>
+        <li><a href="pandas.html">pandas</a></li>
+        <li><a href="visualization.html">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html" class="active">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>项目简介</h2>
+    <p>本案例将综合运用前面学习的知识，分析泰坦尼克号乘客哪些因素与生存率相关。通过这一实践，您将体验完整的数据分析流程。</p>
+    <h2>1. 导入库和数据</h2>
+    <p>首先导入必要的库，并使用 pandas 读取数据集（假设数据文件名为 <code>titanic.csv</code>）：</p>
+    <pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 读取数据
+df = pd.read_csv('titanic.csv')
+
+# 查看数据概要
+print(df.head())
+print(df.info())
+</code></pre>
+    <h2>2. 数据清洗</h2>
+    <p>清洗步骤包括处理缺失值、删除无关特征和编码类别变量。示例如下【818122877753921†L90-L101】：</p>
+    <pre><code># 填补缺失年龄为中位数
+df['Age'].fillna(df['Age'].median(), inplace=True)
+
+# 用最常见值填补登船港口
+df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
+
+# 删除无用列
+df.drop(['Cabin', 'Ticket'], axis=1, inplace=True)
+
+# 编码类别变量
+df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
+df['Embarked'] = df['Embarked'].map({'S': 0, 'C': 1, 'Q': 2})
+</code></pre>
+    <h2>3. 探索性分析</h2>
+    <p>探索数据中各特征与生存率的关系。例如使用 <code>groupby</code> 计算不同性别和舱位的生存率：</p>
+    <pre><code># 按性别计算生存率
+survival_by_sex = df.groupby('Sex')['Survived'].mean()
+print(survival_by_sex)
+
+# 按船舱等级计算生存率
+survival_by_pclass = df.groupby('Pclass')['Survived'].mean()
+print(survival_by_pclass)
+</code></pre>
+    <p>也可以根据年龄将乘客分组，查看不同年龄段的生存率：</p>
+    <pre><code># 创建年龄段
+bins = [0, 12, 20, 40, 60, 80]
+labels = ['儿童', '少年', '青年', '中年', '老年']
+df['AgeGroup'] = pd.cut(df['Age'], bins=bins, labels=labels)
+survival_by_age = df.groupby('AgeGroup')['Survived'].mean()
+print(survival_by_age)
+</code></pre>
+    <h2>4. 可视化</h2>
+    <p>使用 Matplotlib 或 Seaborn 将结果可视化。例如绘制不同舱位生存率的柱状图：</p>
+    <pre><code># 将索引和数据转换为 DataFrame
+pclass_survival = survival_by_pclass.reset_index()
+pclass_survival.columns = ['Pclass', 'SurvivalRate']
+
+sns.barplot(x='Pclass', y='SurvivalRate', data=pclass_survival)
+plt.title('不同船舱等级的生存率')
+plt.xlabel('船舱等级')
+plt.ylabel('生存率')
+plt.show()
+</code></pre>
+    <h2>5. 总结</h2>
+    <p>通过本案例，我们从数据读取、清洗到分析和可视化，完成了一个简单的数据分析流程。结果显示女性乘客的生存率显著高于男性，头等舱乘客的生存率也高于其他舱位。您可以继续深入探索更多特征，如家庭成员数量、票价等，对生存率的影响。</p>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>

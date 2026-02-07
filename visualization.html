@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>数据可视化</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html">环境准备</a></li>
+        <li><a href="python_basics.html">Python基础</a></li>
+        <li><a href="numpy.html">NumPy</a></li>
+        <li><a href="pandas.html">pandas</a></li>
+        <li><a href="visualization.html" class="active">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>使用 Matplotlib 绘图</h2>
+    <p>Matplotlib 是 Python 最常用的绘图库之一。一个图形由 <code>Figure</code> 对象和一个或多个 <code>Axes</code> 组成。可以通过 <code>plt.subplots()</code> 创建图和坐标轴，使用 <code>ax.plot()</code> 绘制数据，再调用 <code>plt.show()</code> 显示【769659793286892†L124-L134】。</p>
+    <pre><code>import matplotlib.pyplot as plt
+
+# 创建数据
+x = [0, 1, 2, 3, 4]
+y = [0, 1, 4, 9, 16]
+
+# 创建图形和坐标轴
+fig, ax = plt.subplots()
+ax.plot(x, y, marker='o')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_title('简单折线图')
+
+plt.show()
+</code></pre>
+    <h2>使用 Seaborn 绘图</h2>
+    <p>Seaborn 是建立在 Matplotlib 之上的高级可视化库，提供了绘制统计图形的高级接口【321858038600472†L42-L45】。使用 Seaborn 可以更容易地绘制美观的信息图。</p>
+    <pre><code>import seaborn as sns
+import pandas as pd
+
+# 创建示例数据
+df = pd.DataFrame({
+    '类别': ['A', 'B', 'C', 'D'],
+    '值': [10, 23, 17, 5]
+})
+
+# 绘制条形图
+sns.barplot(x='类别', y='值', data=df)
+plt.title('类别对比条形图')
+plt.show()
+</code></pre>
+    <p>Seaborn 还支持散点图、箱线图、热力图等多种统计可视化，可以根据需要探索。</p>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>

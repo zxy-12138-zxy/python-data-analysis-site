@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>NumPy 教程</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>NumPy 基础</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html">环境准备</a></li>
+        <li><a href="python_basics.html">Python基础</a></li>
+        <li><a href="numpy.html" class="active">NumPy</a></li>
+        <li><a href="pandas.html">pandas</a></li>
+        <li><a href="visualization.html">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>NumPy 简介</h2>
+    <p>NumPy 是一个用于科学和工程计算的开源库，它提供了多维数组对象（<code>ndarray</code>）以及对这些数组进行高效操作的函数【111275191213374†L74-L78】【111275191213374†L115-L158】。由于其高速的矢量化运算、广播机制和内存效率，NumPy 成为 Python 数据分析和数值计算的核心库。</p>
+    <p>通常使用 <code>import numpy as np</code> 来导入该库【111275191213374†L81-L86】。</p>
+    <h2>创建数组</h2>
+    <p>NumPy 提供了多种创建数组的方法，例如从 Python 列表创建、使用内置函数生成特定序列等：</p>
+    <pre><code>import numpy as np
+
+# 从列表创建一维数组
+arr1 = np.array([1, 2, 3])
+
+# 创建二维数组
+arr2 = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+# 使用内置函数创建序列
+zeros = np.zeros((2, 3))     # 全零数组
+ones = np.ones(4)            # 一维全一数组
+arange = np.arange(0, 10, 2) # 0 到 8 的步长为 2 的数组
+</code></pre>
+    <h2>数组属性与索引</h2>
+    <p>数组具有一些有用的属性，例如形状 (<code>shape</code>)、数据类型 (<code>dtype</code>) 等，可以用来了解数组的结构：</p>
+    <pre><code>print(arr2.shape)  # 输出 (2, 3)
+print(arr1.dtype) # 输出元素的数据类型
+</code></pre>
+    <p>NumPy 使用 0 起始索引，可以通过切片访问子数组：</p>
+    <pre><code># 访问第二行第三列元素
+element = arr2[1, 2]
+
+# 访问第一行的前两列
+subarray = arr2[0, :2]
+</code></pre>
+    <h2>向量化运算</h2>
+    <p>NumPy 支持对整个数组进行元素级运算，而无需显式编写循环。例如：</p>
+    <pre><code>x = np.array([1, 2, 3])
+y = np.array([4, 5, 6])
+
+# 元素级加法和乘法
+sum_xy = x + y        # [5, 7, 9]
+product_xy = x * y    # [4, 10, 18]
+
+# 广播：不同形状的数组也可以运算
+z = np.array([10])
+result = x + z        # [11, 12, 13]
+</code></pre>
+    <p>通过利用向量化运算，可以显著提高代码的执行效率。</p>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>

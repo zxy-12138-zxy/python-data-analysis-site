@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>环境准备</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>环境准备</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html" class="active">环境准备</a></li>
+        <li><a href="python_basics.html">Python基础</a></li>
+        <li><a href="numpy.html">NumPy</a></li>
+        <li><a href="pandas.html">pandas</a></li>
+        <li><a href="visualization.html">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>环境准备与安装</h2>
+    <p>Anaconda 是一个集成了众多科学计算和数据分析库的 Python 发行版，广泛应用于数据科学领域，并建议至少 4 GB 内存以流畅运行【897115196629532†L27-L33】。</p>
+    <h3>安装步骤</h3>
+    <ol>
+        <li>访问 <a href="https://www.anaconda.com/" target="_blank">Anaconda 官网</a> 并下载适用于您操作系统的 Python&nbsp;3.x 版本安装包【897115196629532†L34-L39】。</li>
+        <li>按照安装程序指引完成安装。</li>
+        <li>安装完成后启动 <strong>Anaconda Navigator</strong>，这是一个图形化的管理界面。</li>
+    </ol>
+    <h3>启动 Jupyter Notebook</h3>
+    <p>Anaconda 内置 Jupyter Notebook，可通过以下步骤启动【897115196629532†L53-L63】：</p>
+    <ol>
+        <li>在 Anaconda Navigator 中点击 <em>Launch</em> 启动 Jupyter Notebook。</li>
+        <li>浏览器打开后，选择一个文件夹作为工作目录，然后点击 <em>New → Python&nbsp;3</em> 创建新的 notebook。</li>
+    </ol>
+    <h3>包管理</h3>
+    <p>在数据分析过程中常需安装或更新各种库。可以通过 <code>conda</code> 命令管理包【897115196629532†L116-L143】：</p>
+    <pre><code>conda list            # 查看已安装的包列表
+conda search pandas   # 搜索 pandas 包
+conda install pandas  # 安装 pandas
+conda remove pandas   # 卸载 pandas
+</code></pre>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>

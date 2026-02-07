@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>pandas 教程</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>pandas 基础</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html">环境准备</a></li>
+        <li><a href="python_basics.html">Python基础</a></li>
+        <li><a href="numpy.html">NumPy</a></li>
+        <li><a href="pandas.html" class="active">pandas</a></li>
+        <li><a href="visualization.html">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>pandas 简介</h2>
+    <p>pandas 是基于 NumPy 构建的高性能数据分析库，提供了两个核心数据结构：<strong>Series</strong>（一维带标签的数组）和 <strong>DataFrame</strong>（二维带标签的数据结构）【38640199542741†L86-L95】。DataFrame 类似于电子表格或由多个 Series 构成的字典，每列可以保存不同的数据类型【802495137059678†L505-L509】。可以从多种输入创建 DataFrame，包括列表、字典、数组、Series、以及其它 DataFrame【802495137059678†L510-L520】。</p>
+    <h2>创建 Series 和 DataFrame</h2>
+    <pre><code>import pandas as pd
+
+# 创建 Series（索引可自定义）
+s = pd.Series([10, 20, 30], index=["a", "b", "c"])
+
+# 创建 DataFrame——从字典构建
+data = {
+    "姓名": ["张三", "李四", "王五"],
+    "年龄": [25, 30, 28],
+    "城市": ["北京", "上海", "广州"]
+}
+df = pd.DataFrame(data)
+</code></pre>
+    <h2>读取数据</h2>
+    <p>pandas 提供了丰富的 I/O 接口，可从 CSV、Excel、SQL 等格式读取数据。最常用的函数之一是 <code>read_csv()</code>，它会返回一个 DataFrame【658501035818098†L73-L80】：</p>
+    <pre><code># 读取本地 CSV 文件
+df = pd.read_csv("data.csv")
+
+# 查看前几行
+print(df.head())
+</code></pre>
+    <h2>数据探索与选择</h2>
+    <p>探索数据的一些常用方法包括：</p>
+    <ul>
+        <li><code>df.head(n)</code>：查看前 n 行（默认 5 行）；</li>
+        <li><code>df.describe()</code>：计算数值列的统计信息；</li>
+        <li><code>df["列名"]</code>：选择单列 Series；</li>
+        <li><code>df.loc[行标签, 列标签]</code> 或 <code>df.iloc[行位置, 列位置]</code>：基于标签或位置选择数据。</li>
+    </ul>
+    <h2>数据清洗示例</h2>
+    <p>清洗数据是分析中的重要步骤，通常需要处理缺失值、重复值和类别编码等。以下示例基于泰坦尼克号乘客数据集，展示如何填补缺失值、删除无用列并将类别变量编码为数字【818122877753921†L90-L101】：</p>
+    <pre><code># 假设 df 是泰坦尼克号数据集
+
+# 填补缺失年龄为中位数
+df["Age"].fillna(df["Age"].median(), inplace=True)
+
+# 用最常见值填补登船港口
+df["Embarked"].fillna(df["Embarked"].mode()[0], inplace=True)
+
+# 删除无用列
+df.drop(["Cabin", "Ticket"], axis=1, inplace=True)
+
+# 将性别和登船港口映射为数值
+df["Sex"] = df["Sex"].map({"male": 0, "female": 1})
+df["Embarked"] = df["Embarked"].map({"S": 0, "C": 1, "Q": 2})
+</code></pre>
+    <p>通过这些操作，可以将原始数据转换为适用于建模和进一步分析的格式。</p>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>

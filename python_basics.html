@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Python 基础</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Python 基础</h1>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="installation.html">环境准备</a></li>
+        <li><a href="python_basics.html" class="active">Python基础</a></li>
+        <li><a href="numpy.html">NumPy</a></li>
+        <li><a href="pandas.html">pandas</a></li>
+        <li><a href="visualization.html">可视化</a></li>
+        <li><a href="analysis_process.html">分析流程</a></li>
+        <li><a href="project.html">实战案例</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>变量与数据类型</h2>
+    <p>在 Python 中，整数和浮点数分别被表示为 <code>int</code> 和 <code>float</code> 类型【230082119079088†L107-L109】。变量通过赋值语句创建，无需事先声明；下面演示了变量赋值及基本算术运算【230082119079088†L137-L145】：</p>
+    <pre><code># 数值类型
+a = 10          # 整数 int
+b = 3.14        # 浮点数 float
+
+# 算术运算
+sum_value = a + b      # 加法
+product = a * b        # 乘法
+power = a ** 2         # 幂运算（10 的平方）
+</code></pre>
+    <p>Python 还提供字符串、列表、字典等复合类型，用于存储和处理复杂数据结构。</p>
+    <h2>流程控制</h2>
+    <h3>条件语句</h3>
+    <p>条件语句使用 <code>if</code>、<code>elif</code> 和 <code>else</code> 来根据条件执行代码块【658329677986108†L77-L101】：</p>
+    <pre><code>score = 85
+if score &gt;= 90:
+    grade = "A"
+elif score &gt;= 80:
+    grade = "B"
+else:
+    grade = "C"
+print(grade)
+</code></pre>
+    <h3>循环</h3>
+    <p><code>for</code> 循环可以遍历序列中的每个元素【658329677986108†L109-L124】：</p>
+    <pre><code>fruits = ["苹果", "香蕉", "橙子"]
+for fruit in fruits:
+    print(fruit)
+</code></pre>
+    <p>使用 <code>range()</code> 可生成整数序列，用于循环计数【658329677986108†L147-L156】：</p>
+    <pre><code># 打印 0 到 4
+for i in range(5):
+    print(i)
+</code></pre>
+    <h2>函数</h2>
+    <p>函数使用 <code>def</code> 关键字定义。函数体通过缩进表示，且可以包含文档字符串来说明功能【448517437935602†L550-L567】。参数传递采用对象引用，每次调用都会创建新的局部作用域【448517437935602†L579-L583】。使用 <code>return</code> 返回结果，若未指定返回值则默认返回 <code>None</code>【448517437935602†L631-L633】。</p>
+    <pre><code>def greet(name):
+    """根据传入的名字生成问候语"""
+    message = f"你好，{name}!"
+    return message
+
+print(greet("小明"))
+</code></pre>
+    <p>通过合理运用函数，可以将程序组织成可重用的模块，提高代码的可读性和维护性。</p>
+</div>
+<footer>
+    <p>&copy; 2026 Python 数据分析教学网站</p>
+</footer>
+</body>
+</html>
